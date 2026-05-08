@@ -30,7 +30,7 @@ jobs:
     name: Reset to a clean state
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: ./
         with:
           token: ${{ secrets.PAT_TOKEN }}
@@ -64,7 +64,7 @@ jobs:
     needs: add_temp_pkgs4
     if: github.event_name != 'workflow_dispatch' || inputs.skip_delete == false
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: ./
         id: deleted-action
         with:
@@ -87,7 +87,7 @@ jobs:
     needs: delete_package_with_signature
     if: github.event_name != 'workflow_dispatch' || inputs.skip_delete == false
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: ./
         id: deleted-action
         with:

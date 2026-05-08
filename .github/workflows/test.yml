@@ -21,7 +21,7 @@ jobs:
     name: Reset to a clean state
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: ./
         env:
           ACTIONS_STEP_DEBUG: 'true'
@@ -62,11 +62,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: add_temp_pkgs2
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
@@ -93,7 +93,7 @@ jobs:
     runs-on: ubuntu-latest
     needs:   clean_untagged_pkgs1
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: ./
         id: deleted-action
         with:
@@ -114,7 +114,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: clean_untagged_pkgs2
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: ./
         env:
           ACTIONS_STEP_DEBUG: 'true'
@@ -137,7 +137,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: clean_untagged_pkgs2
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: ./
         id: deleted-action
         with:
@@ -160,7 +160,7 @@ jobs:
       - delete_package
       - delete_multiple_packages
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: ./
         id: deleted-action
         with:
@@ -208,7 +208,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: add_temp_pkgs_multiple_platforms_again
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: ./
         env:
           ACTIONS_STEP_DEBUG: 'true'
@@ -232,7 +232,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: delete_multiple_platforms_except_untagged_multiplatform
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: ./
         id: deleted-action
         with:
